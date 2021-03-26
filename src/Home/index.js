@@ -15,9 +15,6 @@ function Home() {
         setImgs={setImgs}
         setError={setError}
       />
-      <h2>isLoading: {isLoading}</h2>
-      <h2>imgs: {imgs}</h2>
-      <h2>error: {error}</h2>
     </div>
   );
 }

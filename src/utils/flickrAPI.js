@@ -1,12 +1,13 @@
-import jsonp from './jsonp';
-import axios from 'axios';
+import $ from 'jquery';
 
-const API_URL = (tags) => `http://api.flickr.com/services/feeds/photos_public.gne?tags=${tags}&format=json&jsoncallback=JSON_CALLBACK`
+
+// const API_URL = (tags) => `http://api.flickr.com/services/feeds/photos_public.gne?tags=${tags}&format=json&jsoncallback=JSON_CALLBACK`
+const API_URL = (tags) => `http://api.flickr.com/services/feeds/photos_public.gne?tags=${tags}&format=json&jsoncallback=?`
 
 // export async function searchImgs(tags = '') {
 //   try {
 //     console.log('*****\n\n Value of tags in flickrAPI', tags, '\n\n *****')
-//     // const response = await axios.get(API_URL(tags))
+//     const response = await axios.get(API_URL(tags))
 //     console.log('*****\n\n Value of response in flickrAPI', response, '\n\n *****')
 //     const imgs = response.items.map(el => {
 //       const src = el.link.replaceAll('/', '')
@@ -23,16 +24,20 @@ const API_URL = (tags) => `http://api.flickr.com/services/feeds/photos_public.gn
 //   }
 // }
 
-// export default searchImgs;
+export async function searchImgs(tags = '') {
+  try {
+    const response = await $.getJSON(API_URL(tags), res => {return res})
+    const imgs = response.items.map(el => {
+      const src = el.link.replaceAll('/', '')
+      const title = el.title.replaceAll('/', '')
+      const alt = el.title
+      return { src, title, alt }
+    });
+    return {imgs}
+  } catch (err){
+    console.log(err)
+    return {err}
+  }
+}
 
-export default ( tags, callback) =>
-jsonp(
-  tags,
-  res => callback(JSON.parse(res.data))
-  );
-
-  // export default callback =>
-  // jsonp(
-  //   API_URL(tags),
-  //   response => callback(JSON.parse(response.data))
-  // );
+export default searchImgs;

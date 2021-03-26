@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import useJSONP from 'use-jsonp';
+import searchImgs from './../utils/flickrAPI';
 import './SearchBar.css';
 
 function SearchBar({ setImgs, setError, setIsLoading }) {
-const API_URL = (ts) => `http://api.flickr.com/services/feeds/photos_public.gne?tags=${ts}&format=json&jsoncallback=JSON_CALLBACK`
+// const API_URL = (ts) => `http://api.flickr.com/services/feeds/photos_public.gne?tags=${ts}&format=json&jsoncallback=JSON_CALLBACK`
 const [searchTags, setSearchTags] = useState({tags: ''})
 
   const handleChange = evt => {
@@ -14,17 +14,17 @@ const [searchTags, setSearchTags] = useState({tags: ''})
     }));
   }
 
-  // async function handleSubmit(evt){
-  //   evt.preventDefault();
-  //   console.log("handling Submit")
-  //   setIsLoading(true)
-  //   const result = await searchImgs(searchTags.tags.replaceAll(' ', ','))
-  //   console.log(result)
-  //   if(result.imgs) setImgs(result.imgs)
-  //   if (result.error) setError(result.error)
-  //   setIsLoading(false)
-  //   console.log("handled submit")
-  // }
+  async function handleSubmit(evt){
+    evt.preventDefault();
+    console.log("handling Submit")
+    setIsLoading(true)
+    const result = await searchImgs(searchTags.tags.replaceAll(' ', ','))
+    console.log("result in handle submit", result)
+    if(result.imgs) setImgs(result.imgs)
+    if (result.error) setError(result.error)
+    setIsLoading(false)
+    console.log("handled submit")
+  }
 
 
   return (
