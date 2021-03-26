@@ -1,5 +1,6 @@
 # Flickr API
-![screenshot](https://github.com/JayRVigilla/flickr-API/raw/main/flickrAPIscreenshot.png "Flickr Public API")
+
+![Flickr API screenshot](https://github.com/JayRVigilla/flickr-API/raw/master/flickrAPIscreenshot.png "Flickr Public API")
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
