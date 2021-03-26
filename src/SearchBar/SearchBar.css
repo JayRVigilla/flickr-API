@@ -1,0 +1,12 @@
+.SearchBar{
+  margin: 2rem;
+  /* width: 100%; */
+}
+
+.SearchBar input{
+  margin: .13rem;
+}
+
+.SearchBar label{
+  visibility: hidden;
+}
