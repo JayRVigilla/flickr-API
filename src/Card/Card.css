@@ -1,0 +1,10 @@
+.Card{
+  border: 1px solid lightgrey;
+  width: auto;
+  max-width: 30vw;
+  margin: 1.5rem;
+}
+
+.Card .content{
+  margin: .75rem .75rem 3rem;
+}
