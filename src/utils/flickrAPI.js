@@ -5,7 +5,7 @@ export async function searchImgs(tags = '') {
   try {
     const response = await $.getJSON(API_URL(tags), res => {return res})
     const imgs = response.items.map(el => {
-      const src = el.link.replaceAll('\\', '')
+      const src = el.media.m.replaceAll('\\', '')
       const title = el.title.replaceAll('\\', '')
       const alt = el.title
       return { src, title, alt }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import SearchBar from './../SearchBar';
-import Card from './../Card';
 import CardList from './../CardList';
+import Loading from './../Loading';
+import SearchError from './../SearchError';
 import './Home.css';
 
 function Home() {
@@ -10,12 +11,6 @@ function Home() {
   const [imgs, setImgs] = useState([])
   const [error, setError] = useState(undefined)
 
-  // const cardTest = {
-  //   src: "https:www.flickr.comphotoswhitebutton51072149317",
-  //   title: "Banana Blues",
-  //   alt: "Banana Blues"
-  // }
-
   return (
     <div className="Home">
       <SearchBar
@@ -23,6 +18,8 @@ function Home() {
         setImgs={setImgs}
         setError={setError}
       />
+      {isLoading && <Loading />}
+      {error && <SearchError/>}
       <CardList imgs={imgs}/>
     </div>
   );

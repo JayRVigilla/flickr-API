@@ -1,10 +1,17 @@
 .Card{
-  border: 1px solid lightgrey;
   width: auto;
+  height: auto;
   max-width: 30vw;
-  margin: 1.5rem;
+  margin: .5rem;
 }
 
 .Card .content{
-  margin: .75rem .75rem 3rem;
+  border: 1px solid lightgrey;
+  background-color: white;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  margin: .75rem;
+  justify-items: center;
+  width: 90%;
 }
